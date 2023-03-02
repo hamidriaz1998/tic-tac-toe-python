@@ -5,6 +5,24 @@ import random
 # Defining players.
 player_1 = 'X'
 player_2 = 'O'
+
+# function to generate a dummy board to explain the location of cell to the user.
+
+
+def render_dummy_board():
+    board = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+    first_row = f'{board[0][0]} | {board[0][1]} | {board[0][2]}\n'
+    second_row = f'{board[1][0]} | {board[1][1]} | {board[1][2]}\n'
+    third_row = f'{board[2][0]} | {board[2][1]} | {board[2][2]}\n'
+
+    # Create new combined string with rows
+    lines = f'{first_row}{second_row}{third_row}'
+    print(lines)
+
 # function to generate an empty board.
 
 
@@ -17,19 +35,23 @@ def empty_board():
     return board
 
 # Defining a function to create a dictionary refrencing to each cell in the board.
+
+
 def dictionary():
     dictionary = {
-        1: (0,0),
-        2: (0,1),
-        3: (0,2),
-        4: (1,0),
-        5: (1,1),
-        6: (1,2),
-        7: (2,0),
-        8: (2,1),
-        9: (2,2)
+        1: (0, 0),
+        2: (0, 1),
+        3: (0, 2),
+        4: (1, 0),
+        5: (1, 1),
+        6: (1, 2),
+        7: (2, 0),
+        8: (2, 1),
+        9: (2, 2)
     }
     return dictionary
+
+
 # Define empty_cell
 empty_cell = '-'
 
@@ -50,14 +72,19 @@ def render(board):
 
 def input_coordinates():
     # Inputting cell number from user.
-    usr_input=int(input("Enter the cell:"))
+    usr_input = int(input("Enter the cell:"))
+    if usr_input not in range(1, 10):
+        print("Invalid input. Try again")
+        usr_input = int(input("Enter the cell:"))
     # Creating a dictionary to map cell number to coordinates.
-    cell_dict=dictionary()
+    cell_dict = dictionary()
     # Returning the coordinates of the cell.
-    move_coordinates=cell_dict[usr_input]
+    move_coordinates = cell_dict[usr_input]
     return move_coordinates
 
 # Make a move in the given gameboard based on player's coordinates
+
+
 def make_move(old_board, move_coordinates, player_move):
 
     # Create a duplicate gameboard for the new board
@@ -105,6 +132,9 @@ def winner(board):
 
 
 def play_game():
+    # Print the dummy board.
+    render_dummy_board()
+    print("Enter the cell number according to above board.\n")
     # Generate an empty board.
     board = empty_board()
     # Print the empty board.
@@ -119,7 +149,7 @@ def play_game():
             # Take input from player 1.
             move_coordinates = input_coordinates()
             # Checking if the box is already taken.
-            if board[move_coordinates[0]][move_coordinates[1]]!=None:
+            if board[move_coordinates[0]][move_coordinates[1]] != None:
                 print("This move is not possible. The box is already taken. Try again")
                 move_coordinates = input_coordinates()
             # Update the board with player 1's move.
@@ -135,7 +165,7 @@ def play_game():
             # Take input from player 2.
             move_coordinates = input_coordinates()
             # Checking if the box is already taken.
-            if board[move_coordinates[0]][move_coordinates[1]]!=None:
+            if board[move_coordinates[0]][move_coordinates[1]] != None:
                 print("This move is not possible. The box is already taken. Try again")
                 move_coordinates = input_coordinates()
             # Update the board with player 2's move.
