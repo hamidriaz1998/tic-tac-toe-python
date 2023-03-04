@@ -72,10 +72,12 @@ def render(board):
 
 def input_coordinates():
     # Inputting cell number from user.
-    usr_input = int(input("Enter the cell:"))
-    if usr_input not in range(1, 10):
+    usr_input = input("Enter the cell:")
+    #if usr_input not in range(1, 10):
+    while usr_input.isdigit() == False or int(usr_input) not in range(1, 10):
         print("Invalid input. Try again")
-        usr_input = int(input("Enter the cell:"))
+        usr_input = (input("Enter the cell:"))
+    usr_input = int(usr_input)
     # Creating a dictionary to map cell number to coordinates.
     cell_dict = dictionary()
     # Returning the coordinates of the cell.
