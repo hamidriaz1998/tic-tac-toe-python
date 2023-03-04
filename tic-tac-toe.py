@@ -51,7 +51,6 @@ def dictionary():
     }
     return dictionary
 
-
 # Define empty_cell
 empty_cell = '-'
 
@@ -73,7 +72,7 @@ def render(board):
 def input_coordinates():
     # Inputting cell number from user.
     usr_input = input("Enter the cell:")
-    #if usr_input not in range(1, 10):
+    # Checking if the input is not empty and in range.
     while usr_input.isdigit() == False or int(usr_input) not in range(1, 10):
         print("Invalid input. Try again")
         usr_input = (input("Enter the cell:"))
