@@ -178,7 +178,10 @@ def play_game():
             # Print whose turn it is.
             print("It is", turn, "'s turn")
     # Print the winner.
-    print("The winner is:", winner(board))
+    if winner(board) == 'X' or winner(board) == 'O':
+        print("The winner is:", winner(board))
+    elif winner(board) == 'Tie':
+        print("It is a tie.")    
     # Ask the players if they want to play again.
     play_again = input("Do you want to play again? (y/n)")
     # If yes, play again.
