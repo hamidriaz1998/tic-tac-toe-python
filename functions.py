@@ -191,6 +191,3 @@ def play_game():
     else:
         exit()
 
-
-# Call the play_game function to start the game.
-play_game()
